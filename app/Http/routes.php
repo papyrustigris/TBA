@@ -23,8 +23,7 @@ Route::get('resources', 'HomeController@resources');
 
 Route::get('help', 'HomeController@help');
 
-Route::get('register', 'RegisterController@index');
-Route::post('register', 'RegisterController@store');
+Route::resource('register', 'SignupController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

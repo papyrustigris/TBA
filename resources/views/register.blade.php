@@ -36,26 +36,26 @@
 						</div>
 					@endif
 
-					<form class="form-horizontal" role="form" method="POST">
+					{!! Form::open(['route' => 'register.store']) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">			
 
 						<div class="form-group">
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="firstName" placeholder="First Name">
+							{!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder'=>'First Name']) !!} 
 							</div>
 
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="lastName" placeholder="Last Name">
+							{!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) !!} 
 							</div>
 						</div>
 
 						<div class="form-group">
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="address1" placeholder="Address Line 1">
+							{!! Form::text('address_line_1', null, ['class'=>'form-control', 'placeholder'=>'Address Line 1']) !!} 
 							</div>
 						
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="address2" placeholder="Address Line 2">
+							{!! Form::text('address_line_2', null, ['class'=>'form-control', 'placeholder'=>'Address Line 2']) !!} 
 							</div>
 						</div>
 
@@ -118,41 +118,47 @@
 							</div>
 
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="zipCode" placeholder="Zip Code">
+							{!! Form::text('zip_code', null, ['class'=>'form-control', 'placeholder'=>'Zip Code']) !!} 
 							</div>
 						</div>
 
 
 						<div class="form-group">
 							<div class="col-md-6">
-								<input type="email" class="form-control" name="email" placeholder="Email Address">
+								{!! Form::email('email', null, ['class'=>'form-control', 'type'=>'email', 'placeholder'=>'Email']) !!}
 							</div>
 
 							<div class="col-md-6">
-								<a class="btn btn-danger btn-block" href="{{ url('/') }}">HELP I DONT HAVE AN EMAIL</a>
+								<a class="btn btn-danger btn-block" href="{{ url('/') }}" style="margin: 8px 0px;">HELP I DONT HAVE AN EMAIL</a>
 							</div>
 						</div>
 
 						<div class="form-group" style="padding:12px 0px; padding-bottom:0px; margin-bottom:4px;">
 							<div class="col-md-3">
-							  <label><input type="radio" name="gender" value="male"> Male</label>
+							  <label> {!! Form::radio('gender', 'male', ['class'=>'form-control']) !!} 
+							  Male
+							  </label>
 							</div>
 
 							<div class="col-md-3">
-							  <label><input type="radio" name="gender" value="female"> Female</label>
+							  <label> {!! Form::radio('gender', 'female', ['class'=>'form-control']) !!} 
+							  Female
+							  </label>
 							</div>
 							
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="age" placeholder="Age">
+								 {!! Form::text('age', null, ['class'=>'form-control', 'placeholder'=>'Enter your age']) !!} 
 							</div>
 						</div>
 
 						<div class="form-group" style="position:relative; bottom:12px;">
 							<div class="col-md-6">
 								<div class="checkbox" style="padding:8px;">
-									<label><input type="checkbox" name="handicap" />Check box if you are disabled or require assistance.</label>
+									<label> {!! Form::checkbox('handicap', null, ['class'=>'form-control']) !!} 
+									Check box if you are disabled or require assistance.</label>
 								</div>
-								<input style="display:none;" type="text" id="handicap-txt-input" class="form-control" name="name" placeholder="Enter your name here">
+								 {!! Form::text('name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
+
 							</div>
 							<div class="col-md-6" style="position:relative; top:30px;">
 								<label>Tell us how you heard about the event</label>
@@ -168,25 +174,16 @@
 
 						<br>
 
-						<!-- <div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
-									Submit
-								</button>
-							</div>
-						</div> -->
-
-					</form>
 				</div> <!-- end panel body -->
 
 				<div class="panel-footer">
-					<span>
-						<a id="step-1-to-2" class="btn btn-primary">
-							Forward
-						</a>
-					</span>
+					<div class="form-group">
+						<div class="col-md-6 col-md-offset-4">
+						{!! Form::submit('Forward', array('class'=>'btn btn-primary', 'id'=>'step-1-to-2', 'disabled')) !!}
+						{!! Form::close() !!}
+						</div>
+					</div>
 				</div>
-
 			</div>
 		</div>  <!-- end step 1 -->
 

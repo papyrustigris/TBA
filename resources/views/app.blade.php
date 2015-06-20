@@ -187,6 +187,13 @@
 			color:black;
 			background-color: white;
 		}
+
+/*FORMS*/
+
+	.form-control {
+		margin:8px 0px;
+	}
+
 	</style>
 
 </head>
