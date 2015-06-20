@@ -12,4 +12,9 @@ class Signup extends Model {
 
 	protected $table = "signups";
 
+	protected $guarded = [
+		'token',
+		'id'
+	];
+
 }

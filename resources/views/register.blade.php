@@ -154,15 +154,15 @@
 						<div class="form-group" style="position:relative; bottom:12px;">
 							<div class="col-md-6">
 								<div class="checkbox" style="padding:8px;">
-									<label> {!! Form::checkbox('handicap', null, ['class'=>'form-control']) !!} 
+									<label> {!! Form::checkbox('disabled', null, ['class'=>'form-control']) !!} 
 									Check box if you are disabled or require assistance.</label>
 								</div>
-								 {!! Form::text('name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
+								 {!! Form::text('disabled_name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
 
 							</div>
 							<div class="col-md-6" style="position:relative; top:30px;">
 								<label>Tell us how you heard about the event</label>
-								<select class="form-control" id="state" name="state" placeholder="State">
+								<select class="form-control" id="how_you_heard" name="how_you_heard_about_us" placeholder="State">
 									<option value="newspaper">Newspaper</option>
 									<option value="billboard">Billboard</option>
 									<option value="printed_invite">Printed Invite</option>

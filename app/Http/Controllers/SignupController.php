@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Signup;
 
 use Illuminate\Http\Request;
+use \Input;
 use \Form;
 
 class SignupController extends Controller {
@@ -21,10 +22,10 @@ class SignupController extends Controller {
 
 	public function store()
 	{
-		$new_signup = new Signup;
-		$new_signup->first_name = "Trogdor";
-		$new_signup->save();
-		return "created a new signup";
+		$newSignUp = new Signup();
+		$input = Input::all();
+		$newSignUp->fill($input);
+		$newSignUp->save();
 	}
 
 }
