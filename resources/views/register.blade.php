@@ -2,10 +2,42 @@
 
 @section('content')
 
+<style>
+	
+	.progress {
+		margin-bottom: 0;
+	}
+
+	.help-block {
+		font-size:12px;
+	}
+
+	input[type="radio"] {
+		margin:20px;
+	}
+
+	.form-group {
+		padding:0;
+		display: inline;
+	}
+
+	a.btn-danger.btn-block {
+		padding: 15px;
+  		margin-top: 5px;
+	}
+
+	input.form-control, select.form-control {
+		height: 50px;
+	}
+	div.form-group.has-error > div > input.form-control {
+		border:2px solid #a94442;
+	}
+</style>
+
 
 <div class="container" style="margin-bottom:100px;">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
 
 
 		<!-- step 1 -->
@@ -23,45 +55,48 @@
 				  </div>
 				</div>
 				
-				
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
+							<strong>Inputs highlighted in red are <i>required</i> </strong>
 						</div>
 					@endif
 
 					{!! Form::open(['route' => 'register.store']) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">			
-
-						<div class="form-group">
+					<div class="row">
+						<div class="form-group @if ($errors->has('first_name')) has-error @endif">
 							<div class="col-md-6">
 							{!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder'=>'First Name']) !!} 
 							</div>
-
+						</div>
+						<div class="form-group @if ($errors->has('last_name')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) !!} 
+							{!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) !!}
 							</div>
 						</div>
-
-						<div class="form-group">
+					</div>
+					<div class="row">
+						<div class="form-group @if ($errors->has('address_line_1')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('address_line_1', null, ['class'=>'form-control', 'placeholder'=>'Address Line 1']) !!} 
+							{!! Form::text('address_line_1', null, ['class'=>'form-control', 'placeholder'=>'Address Line 1']) !!}
 							</div>
-						
+						</div>
+						<div class="form-group">
 							<div class="col-md-6">
 							{!! Form::text('address_line_2', null, ['class'=>'form-control', 'placeholder'=>'Address Line 2']) !!} 
 							</div>
 						</div>
-
-						<div class="form-group">
+					</div>
+					<div class="row">
+						<div class="form-group @if ($errors->has('zip_code')) has-error @endif">
 							<div class="col-md-6">
-								<select class="form-control" id="state" name="state" placeholder="State">
+							{!! Form::text('zip_code', null, ['class'=>'form-control', 'placeholder'=>'Zip Code']) !!} 
+							</div>
+						</div>
+						<div class="form-group @if ($errors->has('state')) has-error @endif">
+							<div class="col-md-6">
+								<select class="form-control" id="state" name="state">
 									<option value="AK">Alaska</option>
 									<option value="AL">Alabama</option>
 									<option value="AR">Arkansas</option>
@@ -114,53 +149,42 @@
 									<option value="WI">Wisconsin</option>
 									<option value="WV">West Virginia</option>
 									<option value="WY">Wyoming</option>
-								</select>
-							</div>
-
-							<div class="col-md-6">
-							{!! Form::text('zip_code', null, ['class'=>'form-control', 'placeholder'=>'Zip Code']) !!} 
+								</select> 
 							</div>
 						</div>
-
-
-						<div class="form-group">
+					</div>
+					<div class="row">
+						<div class="form-group @if ($errors->has('email')) has-error @endif">
 							<div class="col-md-6">
 								{!! Form::email('email', null, ['class'=>'form-control', 'type'=>'email', 'placeholder'=>'Email']) !!}
 							</div>
-
 							<div class="col-md-6">
-								<a class="btn btn-danger btn-block" href="{{ url('/') }}" style="margin: 8px 0px;">HELP I DONT HAVE AN EMAIL</a>
+								<a class="btn btn-danger btn-block" href="{{ url('/') }}" style="">HELP I DONT HAVE AN EMAIL</a>
 							</div>
 						</div>
-
-						<div class="form-group" style="padding:12px 0px; padding-bottom:0px; margin-bottom:4px;">
+					</div>
+					<div class="row">
+						<div class="form-group @if ($errors->has('age')) has-error @endif">
+							<div class="col-md-6">
+								 {!! Form::text('age', null, ['class'=>'form-control', 'placeholder'=>'Enter your age']) !!} 
+							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-md-3">
 							  <label> {!! Form::radio('gender', 'male', ['class'=>'form-control']) !!} 
 							  Male
 							  </label>
 							</div>
-
 							<div class="col-md-3">
 							  <label> {!! Form::radio('gender', 'female', ['class'=>'form-control']) !!} 
 							  Female
 							  </label>
 							</div>
-							
-							<div class="col-md-6">
-								 {!! Form::text('age', null, ['class'=>'form-control', 'placeholder'=>'Enter your age']) !!} 
-							</div>
 						</div>
-
-						<div class="form-group" style="position:relative; bottom:12px;">
+					</div>
+					<div class="row">
+						<div class="form-group">
 							<div class="col-md-6">
-								<div class="checkbox" style="padding:8px;">
-									<label> {!! Form::checkbox('disabled', null, ['class'=>'form-control']) !!} 
-									Check box if you are disabled or require assistance.</label>
-								</div>
-								 {!! Form::text('disabled_name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
-
-							</div>
-							<div class="col-md-6" style="position:relative; top:30px;">
 								<label>Tell us how you heard about the event</label>
 								<select class="form-control" id="how_you_heard" name="how_you_heard_about_us" placeholder="State">
 									<option value="newspaper">Newspaper</option>
@@ -171,16 +195,31 @@
 								</select>
 							</div>
 						</div>
-
-						<br>
+						<div class="form-group">
+							<div class="col-md-6">
+								<label>{!! Form::checkbox('disabled', false, ['class'=>'form-control']) !!}
+								Check box if you are disabled or require assistance.
+								</label>
+							</div>
+							<div class="col-md-6">
+								{!! Form::text('disabled_name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
+							</div>
+						</div>
+					</div>
 
 				</div> <!-- end panel body -->
 
 				<div class="panel-footer">
 					<div class="form-group">
-						<div class="col-md-6 col-md-offset-4">
+						<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+						@if($errors->has())
 						{!! Form::submit('Forward', array('class'=>'btn btn-primary', 'id'=>'step-1-to-2', 'disabled')) !!}
+						@else
+						{!! Form::submit('Forward', array('class'=>'btn btn-primary', 'id'=>'step-1-to-2')) !!}
+						@endif
 						{!! Form::close() !!}
+						</div>
 						</div>
 					</div>
 				</div>
@@ -815,7 +854,8 @@
 		$('input:radio[name="mili_or_not"]').filter('[value="military"]').attr('checked', true);
 		$(".fwd-B").hide();
 
-		$('input:checkbox[name="handicap"]').attr('checked', false);
+		$('input:checkbox[name="disabled"]').attr('checked', false);
+		('#handicap-txt-input').attr('required',false);
 	});
 
 	$('input[type="radio"]').click(function(){
@@ -829,7 +869,7 @@
         }
       });
 
-	$('input:checkbox[name="handicap"]').click(function () {
+	$('input:checkbox[name="disabled"]').click(function () {
 		$('#handicap-txt-input').toggle();
 	});
 
@@ -839,8 +879,10 @@
 
 // FORWARD STEP
 
-$('#step-1-to-2').click(function () {
-  $("#step-1, #step-2").toggle();
+$('#step-1-to-2').click(function (e) {
+	@if (count($errors) === 0) 
+		$("#step-1, #step-2").toggle();
+	@endif
 });
 
 $('#step-2-to-3').click(function () {
