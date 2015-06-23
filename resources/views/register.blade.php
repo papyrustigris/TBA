@@ -62,24 +62,24 @@
 						</div>
 					@endif
 
-					{!! Form::open(['route' => 'register.store']) !!}
+					{!! Form::open(['route' => 'register.store', 'id' => 'form-step-1']) !!}
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">			
 					<div class="row">
 						<div class="form-group @if ($errors->has('first_name')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('first_name', null, ['class'=>'form-control', 'placeholder'=>'First Name']) !!} 
+							{!! Form::text('first_name', null, ['class'=>'form-control required', 'placeholder'=>'First Name']) !!} 
 							</div>
 						</div>
 						<div class="form-group @if ($errors->has('last_name')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('last_name', null, ['class'=>'form-control', 'placeholder'=>'Last Name']) !!}
+							{!! Form::text('last_name', null, ['class'=>'form-control required', 'placeholder'=>'Last Name']) !!}
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group @if ($errors->has('address_line_1')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('address_line_1', null, ['class'=>'form-control', 'placeholder'=>'Address Line 1']) !!}
+							{!! Form::text('address_line_1', null, ['class'=>'form-control required', 'placeholder'=>'Address Line 1']) !!}
 							</div>
 						</div>
 						<div class="form-group">
@@ -88,10 +88,11 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="row">
 						<div class="form-group @if ($errors->has('zip_code')) has-error @endif">
 							<div class="col-md-6">
-							{!! Form::text('zip_code', null, ['class'=>'form-control', 'placeholder'=>'Zip Code']) !!} 
+							{!! Form::text('zip_code', null, ['class'=>'form-control required', 'placeholder'=>'Zip Code']) !!} 
 							</div>
 						</div>
 						<div class="form-group @if ($errors->has('state')) has-error @endif">
@@ -153,20 +154,22 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="form-group @if ($errors->has('email')) has-error @endif">
 							<div class="col-md-6">
-								{!! Form::email('email', null, ['class'=>'form-control', 'type'=>'email', 'placeholder'=>'Email']) !!}
+								{!! Form::email('email', null, ['class'=>'form-control required', 'type'=>'email', 'placeholder'=>'Email']) !!}
 							</div>
 							<div class="col-md-6">
 								<a class="btn btn-danger btn-block" href="{{ url('/') }}" style="">HELP I DONT HAVE AN EMAIL</a>
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="form-group @if ($errors->has('age')) has-error @endif">
 							<div class="col-md-6">
-								 {!! Form::text('age', null, ['class'=>'form-control', 'placeholder'=>'Enter your age']) !!} 
+								 {!! Form::text('age', null, ['class'=>'form-control required', 'placeholder'=>'Enter your age']) !!} 
 							</div>
 						</div>
 						<div class="form-group">
@@ -175,6 +178,8 @@
 							  Male
 							  </label>
 							</div>
+						</div>
+						<div class="form-group">
 							<div class="col-md-3">
 							  <label> {!! Form::radio('gender', 'female', ['class'=>'form-control']) !!} 
 							  Female
@@ -182,6 +187,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-6">
@@ -197,7 +203,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
-								<label>{!! Form::checkbox('disabled', false, ['class'=>'form-control']) !!}
+								<label>{!! Form::checkbox('disabled', '0', ['class'=>'form-control']) !!}
 								Check box if you are disabled or require assistance.
 								</label>
 							</div>
@@ -212,17 +218,13 @@
 				<div class="panel-footer">
 					<div class="form-group">
 						<div class="row">
-						<div class="col-md-6 col-md-offset-3">
-						@if($errors->has())
-						{!! Form::submit('Forward', array('class'=>'btn btn-primary', 'id'=>'step-1-to-2', 'disabled')) !!}
-						@else
-						{!! Form::submit('Forward', array('class'=>'btn btn-primary', 'id'=>'step-1-to-2')) !!}
-						@endif
-						{!! Form::close() !!}
-						</div>
+							<div class="col-md-6 col-md-offset-3">
+								<button class="btn btn-success" id="step-1-to-2">Forward</button>
+							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>  <!-- end step 1 -->
 
@@ -242,55 +244,34 @@
 				</div>
 				
 				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Whoops!</strong> There were some problems with your input.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
-
 					<div class="col-md-8 col-md-offset-2">
 						<div class="form-group">
-							<div class="radio">
-							  <label><input type="radio" name="mili_or_not" value="military">Yes</label>
-							</div>
-							
-								<br>
-
-							<div class="radio">
-							  <label><input type="radio" name="mili_or_not" value="non_military">No</label>
-							</div>
-						</div>					
-					</div>	
+							<label> {!! Form::radio('mili_or_not', 'military', ['class'=>'form-control']) !!} 
+							   Yes
+							</label>
+						<br>
+							<label> {!! Form::radio('mili_or_not', 'non_military', ['class'=>'form-control']) !!} 
+							   No
+							</label>							
+						</div>
+					</div>
 				</div> <!-- end panel body -->
 
 				<div class="panel-footer">
-						<a id="step-2-to-1" class="btn btn-primary">
-							Back
-						</a>
+					<span>
+						<a id="step-2-to-1" class="btn btn-primary">Back</a>
 						<div class="fwd-A">	
-							<span>	
-								<a id="step-2-to-3" class="btn btn-primary">
-									Forward
-								</a>
-							</span>
+							{!! Form::submit('Forward MILI', array('class'=>'btn btn-danger', 'id'=>'step-2-to-3')) !!}
 						</div>
 						<div class="fwd-B">	
-							<span>
-								<a id="step-2-to-4b" class="btn btn-primary">
-									Forward
-								</a>
-							</span>
+							{!! Form::submit('Forward non-MILI', array('class'=>'btn btn-info', 'id'=>'step-2-to-4b')) !!}
 						</div>
 					</span>
+				{!! Form::close() !!}
 				</div>
-
 			</div>
-		</div> <!-- end step 2 -->
+		</div>
+	</div> <!-- end step 2 -->
 
 		<!--  step 3  -->
 		<div id="step-3" style="display:none;">
@@ -850,50 +831,125 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 <script>
-	$( document ).ready(function() {
-		$('input:radio[name="mili_or_not"]').filter('[value="military"]').attr('checked', true);
-		$(".fwd-B").hide();
 
-		$('input:checkbox[name="disabled"]').attr('checked', false);
-		('#handicap-txt-input').attr('required',false);
+$( document ).ready(function() {
+	
+	//CLIENT-SIDE VALIDATION
+
+	$('#step-1-to-2').prop('disabled', true);
+
+	$('input.required').keyup(function () {
+		var empty = false;
+
+		$('input.required').each(function () {
+            if ($(this).val().length == 0) {
+                empty = true;
+        	};
+
+	        if (empty) {
+	            $('#step-1-to-2').prop('disabled', 'disabled');
+	        } else {
+	            $('#step-1-to-2').prop('disabled', false);
+	        };
+		});
 	});
+});
 
-	$('input[type="radio"]').click(function(){
-        if($(this).attr("value")=="military"){
-            $(".fwd-B").hide();
-            $(".fwd-A").show();
-        }
-        if($(this).attr("value")=="non_military"){
-            $(".fwd-A").hide();
-            $(".fwd-B").show();
-        }
-      });
+$('input:radio[name="mili_or_not"]').filter('[value="military"]').prop('checked', true);
+$(".fwd-B").hide();
 
-	$('input:checkbox[name="disabled"]').click(function () {
-		$('#handicap-txt-input').toggle();
-	});
+$('input:checkbox[name="disabled"]').prop('checked', false);
+$('#handicap-txt-input').prop('required', false);
 
-</script>
+// Question Track A or B (military or non-military)
+$('input[type="radio"]').click(function(){
+    if($(this).prop("value")=="military"){
+        $(".fwd-B").hide();
+        $(".fwd-A").show();
+    }
+    if($(this).prop("value")=="non_military"){
+        $(".fwd-A").hide();
+        $(".fwd-B").show();
+    }
+  });
 
-<script>
+$('input:checkbox[name="disabled"]').click(function () {
+	$('#handicap-txt-input').toggle();
+});
 
 // FORWARD STEP
 
 $('#step-1-to-2').click(function (e) {
-	@if (count($errors) === 0) 
-		$("#step-1, #step-2").toggle();
-	@endif
+	e.preventDefault();
+	$('#step-1, #step-2').toggle();
 });
 
-$('#step-2-to-3').click(function () {
-  $("#step-2, #step-3").toggle();
+$('#step-2-to-3').click(function (event) {
+	
+	event.preventDefault();
+
+	$.ajax({
+	    url: '/register',
+	    type: 'POST',
+	    data: {
+	    	_token: $('input[name=_token]').val(),
+	    	first_name: $('input[name=first_name]').val(),
+	    	last_name: $('input[name=last_name]').val(),
+	    	address_line_1: $('input[name=address_line_1]').val(),
+	    	address_line_2: $('input[name=address_line_2]').val(),
+	    	zip_code: $('input[name=zip_code]').val(),
+	    	state: $('select[name=state]').val(),
+	    	email: $('input[name=email]').val(),
+	    	age: $('input[name=age]').val(),
+	    	gender: $('input[name=gender]').val(),
+	    	how_you_heard_about_us: $('select[name=how_you_heard_about_us]').val(),
+	    	disabled: $('input[name=disabled]').val(),
+	    	disabled_name: $('input[name=disabled_name]').val(),
+	    	mili_or_not: $('input[name=mili_or_not]').val()
+	    	},
+		    dataType: 'JSON',
+		    success: function (data) {
+		        console.log(data);
+		    }
+		});
+ 
+	$("#step-2, #step-3").toggle();
+
 });
 
-	//NON MILI
+//NON MILI
 
-	$('#step-2-to-4b').click(function () {
-		$("#step-2, #step-4b").toggle();
-	});
+$('#step-2-to-4b').click(function (event) {
+
+	event.preventDefault();
+
+	$.ajax({
+	    url: '/register',
+	    type: 'POST',
+	    data: {
+	    	_token: $('input[name=_token]').val(),
+	    	first_name: $('input[name=first_name]').val(),
+	    	last_name: $('input[name=last_name]').val(),
+	    	address_line_1: $('input[name=address_line_1]').val(),
+	    	address_line_2: $('input[name=address_line_2]').val(),
+	    	zip_code: $('input[name=zip_code]').val(),
+	    	state: $('select[name=state]').val(),
+	    	email: $('input[name=email]').val(),
+	    	age: $('input[name=age]').val(),
+	    	gender: $('input[name=gender]').val(),
+	    	how_you_heard_about_us: $('select[name=how_you_heard_about_us]').val(),
+	    	disabled: $('input[name=disabled]').val(),
+	    	disabled_name: $('input[name=disabled_name]').val(),
+	    	mili_or_not: $('input[name=mili_or_not]').val()
+	    	},
+		    dataType: 'JSON',
+		    success: function (data) {
+		        console.log(data);
+		    }
+		});
+
+	$("#step-2, #step-4b").toggle();
+});
 
 	// FORWARD	
 		
@@ -971,7 +1027,7 @@ $('#step-2-to-3').click(function () {
 	  $("#step-3, #step-2").toggle();
 	});
 
-  $('#step-2-to-1').click(function () {
+  	$('#step-2-to-1').click(function () {
 	  $("#step-2, #step-1").toggle();
 	});
 

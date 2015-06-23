@@ -21,12 +21,13 @@ class CreateSignupsTable extends Migration {
 			$table->string('address_line_2')->nullable();
 			$table->string('state');
 			$table->integer('zip_code');
-			$table->string('email');
+			$table->string('email');	
 			$table->string('gender');
 			$table->integer('age');
-			$table->boolean('disabled');
+			$table->integer('disabled')->default(0);
 			$table->string('disabled_name')->nullable();
 			$table->string('how_you_heard_about_us');
+			$table->string('mili_or_not');
 			$table->rememberToken();
 			$table->timestamps();
 		});

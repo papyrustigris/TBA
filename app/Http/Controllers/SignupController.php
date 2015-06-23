@@ -34,7 +34,5 @@ class SignupController extends Controller {
 		} else {
 			Signup::create($request->all());
 		};
-
 	}
-
 }
