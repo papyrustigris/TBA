@@ -25,6 +25,15 @@
 		font-family: Arial-Rounded-Bold;
 	}
 
+	#homepage-box {
+		height:100%;
+		background-color: rgba(31, 42, 71, 0.8);
+		color: white;
+		margin: 70px 10px;
+		margin-bottom:150px;
+		margin-left:50px;
+	} 
+
 	h1, .navbar {
 		font-family: Gobold-Bold;
 		font-size:20px;
@@ -60,12 +69,12 @@
 		.navbar-footer > a {
 			color: #26335e;
 			font-weight: bold;
-			font-size: 16px; 
+			font-size: 14px; 
 		}
 
 		.navbar-footer > p {
 			color: #26335e;
-			font-size: 14px; 
+			font-size: 12px; 
 		}
 
 
@@ -103,10 +112,6 @@
 
 	span > img {
 		padding: 0 3px;
-	}
-
-	.container {
-		margin-top:15px;
 	}
 
 	li.active > a {
@@ -147,12 +152,6 @@
 	.panel-footer {
 		text-align: center;
 	}
-
-	#homepage-box {
-		margin: 70px 10px;
-		margin-bottom:150px;
-	}
-
 
    @media only screen and (max-width : 650px) {
 		#homepage-box {
@@ -199,7 +198,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle Navigation</span>
@@ -214,8 +213,7 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-						<li><a href="{{ url('/') }}">HOME I</a></li>
-						<li><a href="{{ url('/home_2') }}">HOME II</a></li>
+						<li><a href="{{ url('/') }}">HOME</a></li>
 						<li><a href="{{ url('/about') }}">ABOUT</a></li>
 						<li><a href="{{ url('/resources') }}">LOCAL RESOURCES</a></li>
 						<li><a href="{{ url('/help') }}">NEED HELP?</a></li>
@@ -231,16 +229,18 @@
 
 	<footer style="position:fixed; bottom:0px; background-color:white; width:100%;">
 		<div class="navbar" style="padding-left:15px;">
-			<div class="navbar-header navbar-footer">
-				<a href="#">Contact</a> / <a href="#">Terms & Conditions</a> / <a href="#">Privacy Policy</a>
-				<p>Duis autem vel eum iriure dolor in hend rerit in vulputate velit esse</p> 
-			</div>
-			<div class="navbar-right navbar-rt-footer">
-				<span>
-					<img src="{{ asset('/images/footer_600px.png') }}" style="max-height:60px; margin-right:10px;" alt="" />
-					<img class="social-icons-footer"src="{{ asset('/images/fb_icon.png') }}" alt="" />
-					<img class="social-icons-footer" src="{{ asset('/images/tw_icon.png') }}" alt="" />
-				</span>
+			<div class="container">
+				<div class="navbar-header navbar-footer">
+					<a href="{{ url('/help') }}">Contact</a> / <a href="#">Terms & Conditions</a> / <a href="#">Privacy Policy</a>
+					<p>Bergstrom, Inc. All Rights Reserved, Copyright 2015 | All promotional advertising is paid for by Bergstrom, Inc.</p> 
+				</div>
+				<div class="navbar-right navbar-rt-footer">
+					<span>
+						<img src="{{ asset('/images/footer_600px.png') }}" style="max-height:60px; margin-right:10px;" alt="" />
+						<img class="social-icons-footer"src="{{ asset('/images/fb_icon.png') }}" alt="" />
+						<img class="social-icons-footer" src="{{ asset('/images/tw_icon.png') }}" alt="" />
+					</span>
+				</div>
 			</div>
 		</div>
 	</footer>

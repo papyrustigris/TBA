@@ -32,11 +32,6 @@ class HomeController extends Controller {
 	{
 		return view('home');
 	}
-
-	public function index_2() 
-	{
-		return view('home_2');
-	}
 	
 	public function about()
 	{

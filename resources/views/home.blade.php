@@ -1,13 +1,10 @@
 @extends('app')
 
 @section('content')
-<div class="container-fluid" style="background-image: url({{ asset('/images/hero_1.jpg') }}); background-repeat:no-repeat; background-size:cover;">
+<div class="container-fluid" style="background-image: url({{ asset('/images/hero_2.jpg') }}); background-repeat:no-repeat; background-size:cover;">
 	<div class="row">
 		<div class="col-md-6">
-			<div id="homepage-box" style="height: 100%;
-									 	border: 8px solid white;
-									 	color: white;">
-
+			<div id="homepage-box">
 				<h1 style="margin-top:15px; padding:10px 15px; font-size:36px;">HELP ROCKFORD SALUTE ITS VETERANS!</h1>
 				<p style="padding:5px 10px;">
 					Bergstrom Inc. and the Salvation Army of Winnebago County are proud to present  Stars & Stripes: A Salute to Our Veterans.

@@ -13,7 +13,12 @@
 	}
 
 	input[type="radio"] {
-		margin:20px;
+		margin:10px;
+	}
+
+	input[name="gender"] {
+	    position: relative;
+  		bottom: 20px;
 	}
 
 	.form-group {
@@ -35,7 +40,7 @@
 </style>
 
 
-<div class="container" style="margin-bottom:100px;">
+<div class="container" style="margin-top:15px; margin-bottom:80px;">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 
@@ -161,7 +166,7 @@
 								{!! Form::email('email', null, ['class'=>'form-control required', 'type'=>'email', 'placeholder'=>'Email']) !!}
 							</div>
 							<div class="col-md-6">
-								<a class="btn btn-danger btn-block" href="{{ url('/') }}" style="">HELP I DONT HAVE AN EMAIL</a>
+								<a class="btn btn-danger btn-block" href="{{ url('/help') }}" style="">HELP I DONT HAVE AN EMAIL</a>
 							</div>
 						</div>
 					</div>
@@ -172,6 +177,23 @@
 								 {!! Form::text('age', null, ['class'=>'form-control required', 'placeholder'=>'Enter your age']) !!} 
 							</div>
 						</div>
+						<div class="form-group">
+							<br>
+							<div class="col-md-6">
+								<label>Tell us how you heard about the event</label>
+								<select class="form-control" id="how_you_heard" name="how_you_heard_about_us" placeholder="State">
+									<option value="newspaper">Newspaper</option>
+									<option value="billboard">Billboard</option>
+									<option value="printed_invite">Printed Invite</option>
+									<option value="radio">Radio</option>
+									<option value="social_media">Social Media</option>
+									<option value="flyer_poster">Flyer/Poster</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
 						<div class="form-group">
 							<div class="col-md-3">
 							  <label> {!! Form::radio('gender', 'male', ['class'=>'form-control']) !!} 
@@ -189,26 +211,43 @@
 					</div>
 
 					<div class="row">
-						<div class="form-group">
-							<div class="col-md-6">
-								<label>Tell us how you heard about the event</label>
-								<select class="form-control" id="how_you_heard" name="how_you_heard_about_us" placeholder="State">
-									<option value="newspaper">Newspaper</option>
-									<option value="billboard">Billboard</option>
-									<option value="printed_invite">Printed Invite</option>
-									<option value="radio">Radio</option>
-									<option value="social_media">Social Media</option>
-								</select>
+						<div class="col-md-6">
+							<br>
+							<p style="font-size:14px;">Invited guests are permitted to bring one (1) guest.<br>
+								Is a guest accompanying you to this event?</p>
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-6">
+									  <label> 
+									  {!! Form::radio('guest', 'yes_guest', false, ['id'=>'guest-name-select']) !!} 
+									  Yes
+									  </label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-6">
+									  <label> {!! Form::radio('guest', 'no_guest', true) !!} 
+									  No
+									  </label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-md-12">
+										{!! Form::text('guest_name', null, ['id'=>'guest-name-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter guest\'s name here', 'style'=>'display:none;']) !!}
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-md-6">
-								<label>{!! Form::checkbox('disabled', '0', ['class'=>'form-control']) !!}
-								Check box if you are disabled or require assistance.
-								</label>
-							</div>
-							<div class="col-md-6">
-								{!! Form::text('disabled_name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
+						<div class="col-md-6">
+							<div class="form-group">
+								<div class="col-md-12">
+									<label>{!! Form::checkbox('disabled', '0', ['class'=>'form-control']) !!}
+										Check box if you or your guest is disabled or requires assistance.
+									</label>
+								</div>
+								<div class="col-md-12">
+									{!! Form::text('disabled_name', null, ['id'=>'handicap-txt-input', 'class'=>'form-control', 'placeholder'=>'Enter your name here', 'style'=>'display:none']) !!} 
+								</div>
 							</div>
 						</div>
 					</div>
@@ -233,7 +272,7 @@
 			<div class="panel panel-default">
 
 				<div class="panel-heading text-center">
-					<h1>Are you a veteran, support personnel, or current member of the U.S. Armed Forces?</h1>
+					<h1>Are you a current or former member of the U.S. Armed Forces?</h1>
 				</div>
 				
 				<div class="progress">
@@ -560,6 +599,11 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-12">
+								<label>
+								{!! Form::checkbox('skip_question', '0', ['class'=>'form-control']) !!}
+								Check here if you do not want to share your story at this time.	
+								</label>
+								<br>
 								<label>We are collecting stories from Military personnel to include in this event. Use the text box below to share a story or memory of your Military service.</label>
 									<textarea type="" class="form-control" rows="5"></textarea>
 							</div>
@@ -757,8 +801,14 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col-md-12">
+								<label>
+								{!! Form::checkbox('skip_question', '0', ['class'=>'form-control']) !!}
+								Check here if you do not want to share your story at this time.	
+								</label>
+								<br>
 								<label>Below is a nostalgia question text area.</label>
 									<textarea type="" class="form-control" rows="5"></textarea>
+								}
 							</div>
 						</div>
 					</div>	
@@ -800,7 +850,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<h1>Thank you!</h1>
-								<p>Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
+								<p>Thank you for completing your registration for the upcoming event, Stars & Stripes: A Salute to Our Veterans.  You will be contacted by our event staff in the coming weeks to confirm seating and answer any questions you may have. 
 								</p>
 							</div>
 						</div>
@@ -817,15 +867,15 @@
 
 			</div>
 		</div> <!-- End step 7 -->
+	</div> 
 
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<p class="text-muted"><i>Event tickets are distributed to veterans in the order the requests are received (maximum of two tickets per person)</i></p>
+			</div>
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-				<p class="text-muted"><i>Completion of this Event Registration Form does not guarantee admittance as tickets are distributed in the order the requests are received.</i></p>
-		</div>
-	</div>
 </div> <!-- end container -->
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -840,7 +890,6 @@ $( document ).ready(function() {
 
 	$('input.required').keyup(function () {
 		var empty = false;
-
 		$('input.required').each(function () {
             if ($(this).val().length == 0) {
                 empty = true;
@@ -875,6 +924,14 @@ $('input[type="radio"]').click(function(){
 
 $('input:checkbox[name="disabled"]').click(function () {
 	$('#handicap-txt-input').toggle();
+});
+
+$('input:radio[name="guest"]').click(function () {
+	if($(this).prop('id') == 'guest-name-select') {
+		$('#guest-name-txt-input').show();
+	} else {
+		$('#guest-name-txt-input').hide();
+	}
 });
 
 // FORWARD STEP
