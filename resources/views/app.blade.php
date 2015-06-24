@@ -32,20 +32,21 @@
 		margin: 70px 10px;
 		margin-bottom:150px;
 		margin-left:50px;
+		padding:15px;
 	} 
 
 	h1, .navbar {
 		font-family: Gobold-Bold;
-		font-size:20px;
+		font-size:16px;
 	}
 
 	h1 {
-		font-size:28px;
+		font-size:24px;
 	}
 
 	p {
 		font-family: Arial-Rounded-Bold;
-		font-size: 19px;
+		font-size: 16px;
 	}
 
 
@@ -59,24 +60,6 @@
 	.navbar-header {
 		min-height: 70px;
 	}
-
-	.navbar-footer {
-		padding-top:12px;
-		padding-left: 15px;
-		font-family: Arial-Rounded-Bold;
-	}
-
-		.navbar-footer > a {
-			color: #26335e;
-			font-weight: bold;
-			font-size: 14px; 
-		}
-
-		.navbar-footer > p {
-			color: #26335e;
-			font-size: 12px; 
-		}
-
 
 	.navbar-brand {
 		max-width: 180px;
@@ -153,6 +136,46 @@
 		text-align: center;
 	}
 
+	.navbar-footer {
+		padding-top:12px;
+		padding-left: 15px;
+		font-family: Arial-Rounded-Bold;
+	}
+
+		.navbar-footer > a {
+			color: #26335e;
+			font-weight: bold;
+			font-size: 12px; 
+		}
+
+		.navbar-footer > p {
+			color: #26335e;
+			font-size: 10px; 
+		}
+
+	.stars-stripes-footer {
+		max-height:60px; 
+		margin-right:10px;	
+	}
+
+	.social-icons-footer {
+		max-height:32px; 
+		position:relative; 
+		top:16px;
+	}
+
+   @media only screen and (max-width : 992px) {
+		.stars-stripes-footer {
+   			max-height: 45px;
+   		}
+   		.social-icons-footer {
+   			max-height: 24px;
+   		}
+   		#homepage-box {
+   			margin-right: 50px;
+   		}
+   }
+
    @media only screen and (max-width : 650px) {
 		#homepage-box {
 			margin: 70px 10px;
@@ -167,11 +190,7 @@
 		display: inline;
 	}
 
-	.social-icons-footer {
-		max-height:32px; 
-		position:relative; 
-		top:16px;
-	}
+	
 
 	p.text-muted {
 		font-size: 16px; 
@@ -192,6 +211,13 @@
 	.form-control {
 		margin:8px 0px;
 	}
+
+footer {
+	position:fixed; 
+	bottom:0px; 
+	background-color:white; 
+	width:100%;
+}
 
 	</style>
 
@@ -227,7 +253,7 @@
 
 	@yield('content')
 
-	<footer style="position:fixed; bottom:0px; background-color:white; width:100%;">
+	<footer>
 		<div class="navbar" style="padding-left:15px;">
 			<div class="container">
 				<div class="navbar-header navbar-footer">
@@ -236,8 +262,8 @@
 				</div>
 				<div class="navbar-right navbar-rt-footer">
 					<span>
-						<img src="{{ asset('/images/footer_600px.png') }}" style="max-height:60px; margin-right:10px;" alt="" />
-						<img class="social-icons-footer"src="{{ asset('/images/fb_icon.png') }}" alt="" />
+						<img class="stars-stripes-footer" src="{{ asset('/images/footer_600px.png') }}" alt="" />
+						<img class="social-icons-footer" src="{{ asset('/images/fb_icon.png') }}" alt="" />
 						<img class="social-icons-footer" src="{{ asset('/images/tw_icon.png') }}" alt="" />
 					</span>
 				</div>

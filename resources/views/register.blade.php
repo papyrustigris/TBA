@@ -37,6 +37,10 @@
 	div.form-group.has-error > div > input.form-control {
 		border:2px solid #a94442;
 	}
+
+	footer {
+		position: static;
+	}
 </style>
 
 
@@ -213,7 +217,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<br>
-							<p style="font-size:14px;">Invited guests are permitted to bring one (1) guest.<br>
+							<p style="font-size:12px;">Invited guests are permitted to bring one (1) guest.<br>
 								Is a guest accompanying you to this event?</p>
 							<div class="row">
 								<div class="form-group">
